@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Reset some basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Style the html and body */
+        html, body {
+            height: 100%;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Set the sticky background image */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('map.jpeg') no-repeat center center/cover;
+            z-index: -1; /* Ensure the image stays in the background */
+            opacity: .7; /* Adjust the opacity as needed */
+        }
+
+        /* Style the header */
+        header {
+            background: rgba(137, 34, 146, 0.8);
+            display: flex;
+            height: 100px;
+            font-size: 200%;
+            color: black;
+            position: relative; /* For absolute positioning of children */
+        }
+        .skate {
+            margin-left: 100px;
+            justify-content: space-between;
+        }
+        #logo {
+            width: auto;
+            height: 90px;
+            left: 10px;
+        }
+
+        #dirsk {
+            background: rgb(255, 255, 255);
+            width: 100%; /* Fixed width */
+            height: 570px;
+            display: flex; /* Enable flexbox */
+            gap: 20px; /* Space between items */
+            box-sizing: border-box; /* Includes padding and border in the width */
+        }
+
+        #im1 {
+            height: 180px;
+            width: auto;
+            margin-top: 90px;
+            margin-left: 100px;
+        }
+        #hover-message {
+            position: absolute; /* Position relative to the parent */
+            left: calc(9% - 60px); /* Adjust the position to the left of the GIF */
+            top: 150px; /* Adjust the vertical position as needed */
+            background-color: blueviolet; /* Background color */
+            color: white; /* Text color */
+            padding: 5px 10px; /* Padding for the message */
+            border-radius: 5px; /* Rounded corners */
+            display: none; /* Initially hidden */
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        #im2 {
+            height: 170px;
+            width: auto;
+            margin-top: 90px;
+        }
+        #hover-message2 {
+            position: absolute; /* Position relative to the parent */
+            left: calc(44% - 60px); /* Adjust the position to the left of the GIF */
+            top: 150px; /* Adjust the vertical position as needed */
+            background-color: blueviolet; /* Background color */
+            color: white; /* Text color */
+            padding: 5px 10px; /* Padding for the message */
+            border-radius: 5px; /* Rounded corners */
+            display: none; /* Initially hidden */
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        #hover-message3 {
+            position: absolute; /* Position relative to the parent */
+            left: calc(81% - 60px); /* Adjust the position to the left of the GIF */
+            top: 160px; /* Adjust the vertical position as needed */
+            background-color: blueviolet; /* Background color */
+            color: white; /* Text color */
+            padding: 5px 10px; /* Padding for the message */
+            border-radius: 5px; /* Rounded corners */
+            display: none; /* Initially hidden */
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        #hover-message4 {
+            position: absolute; /* Position relative to the parent */
+            left: calc(43% - 60px); /* Adjust the position to the left of tryun.jpeg */
+            top: 360px; /* Adjust the vertical position as needed */
+            background-color: blueviolet; /* Background color */
+            color: white; /* Text color */
+            padding: 5px 10px; /* Padding for the message */
+            border-radius: 5px; /* Rounded corners */
+            display: none; /* Initially hidden */
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        #hover-message5 {
+            position: absolute; /* Position relative to the parent */
+            left: calc(5% - 60px); /* Adjust the position to the left of tryun.jpeg */
+            top: 370px; /* Adjust the vertical position as needed */
+            background-color: blueviolet; /* Background color */
+            color: white; /* Text color */
+            padding: 5px 10px; /* Padding for the message */
+            border-radius: 5px; /* Rounded corners */
+            display: none; /* Initially hidden */
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        #hover-messagea {
+            position: absolute; /* Position relative to the parent */
+            left: calc(27% - 60px); /* Adjust the position to the left of the GIF */
+            top: 170px; /* Adjust the vertical position as needed */
+            background-color: black; /* Background color */
+            color: white; /* Text color */
+            padding: 5px 10px; /* Padding for the message */
+            border-radius: 5px; /* Rounded corners */
+            display: none; /* Initially hidden */
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        #hover-messageb {
+            position: absolute; /* Position relative to the parent */
+            left: calc(64% - 60px); /* Adjust the position to the left of the GIF */
+            top: 190px; /* Adjust the vertical position as needed */
+            background-color: black; /* Background color */
+            color: white; /* Text color */
+            padding: 5px 10px; /* Padding for the message */
+            border-radius: 5px; /* Rounded corners */
+            display: none; /* Initially hidden */
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        #hover-messagec {
+            position: absolute; /* Position relative to the parent */
+            left: calc(64% - 60px); /* Adjust the position to the left of the GIF */
+            top: 360px; /* Adjust the vertical position as needed */
+            background-color: black; /* Background color */
+            color: white; /* Text color */
+            padding: 5px 10px; /* Padding for the message */
+            border-radius: 5px; /* Rounded corners */
+            display: none; /* Initially hidden */
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        #hover-messaged {
+            position: absolute; /* Position relative to the parent */
+            left: calc(26% - 60px); /* Adjust the position to the left of tryun.jpeg */
+            top: 370px; /* Adjust the vertical position as needed */
+            background-color: black; /* Background color */
+            color: white; /* Text color */
+            padding: 5px 10px; /* Padding for the message */
+            border-radius: 5px; /* Rounded corners */
+            display: none; /* Initially hidden */
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        #rod1 {
+            height: 50px; /* Make the images the same height as the GIF */
+            width: 100px;
+            margin-top: 150px;
+        }
+        #rod2 {
+            height: 50px; /* Make the images the same height as the GIF */
+            width: 100px;
+            margin-top: 350px;
+            position: relative;
+            left: -300px; /* Adjust this value to position correctly */
+        }
+        #img1 {
+            height: 100px; /* Make the images the same height as the GIF */
+            width: auto;
+            margin-top: 130px;
+        }
+        #img2 {
+            height: 100px; /* Make the images the same height as the GIF */
+            width: auto;
+            margin-top: 110px;
+            margin-left: -70px;
+        }
+        #im3 {
+    height: 170px;
+    width: auto;
+    margin-top: 110px;
+    margin-left: 17px; /* Adjusted margin to move it left */
+}
+        #img3 {
+            height: 150px;
+            width: auto;
+            margin-top: 290px;
+            margin-left: -570px;
+        }
+        #im4 {
+            height: 180px;
+            width: auto;
+            margin-top: 290px;
+            margin-left: -630px;
+        }
+        #img4 {
+            height: 150px;
+            width: auto;
+            margin-top: 290px;
+            margin-left: -580px;
+        }
+        #im5 {
+            height: 180px;
+            width: auto;
+            margin-top: 290px;
+            margin-left: -630px;
+        }
+        /* Style the footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border: 2px solid rgb(0, 0, 0); /* Add border around the footer */
+        }
+    </style>
+    <title>S.K.A.T.E</title>
+</head>
+<body>
+
+<header>
+    <a href="/where.html"><img src="back.jpeg" id="logo"></a>
+    <p> ---go back</p>
+    <p class="skate">Stumble Know Achieve Try Evolve</p>
+    <p class="skate">[S.K.A.T.E]</p>
+    <p class="skate">click to go places</p>
+</header>
+
+<div class="container">
+    <div id="dirsk">
+        <img src="stumbleinc.jpeg" id="im1" onmouseover="showMessage()" onmouseout="hideMessage()">
+        <div id="hover-message">Enter Stumble Skate Dining?</div>
+        <img src="street.png" id="rod1">
+        <img src="foodt.jpeg" id="img1" onmouseover="showMessagea()" onmouseout="hideMessagea()">
+        <div id="hover-messagea">Stumble has a food truck? :O</div> 
+        <img src="street.png" id="rod1">
+        <img src="knowlib.jpeg" alt="lib GIF" id="im2" onmouseover="showMessage2()" onmouseout="hideMessage2()">
+        <div id="hover-message2">Enter Know How Library?</div>
+        <img src="street.png" id="rod1">
+        <img src="cat.gif" id="img2" onmouseover="showMessageb()" onmouseout="hideMessageb()">
+        <div id="hover-messageb">His names Ollie!</div> 
+        <img src="street.png" id="rod1">
+        <img src="gim.jpeg" id="im3" onmouseover="showMessage3()" onmouseout="hideMessage3()">
+        <div id="hover-message3">Enter Achieve Fitness?</div>
+        <img src="street.png" id="rod2">
+        <img src="lite.jpeg" id="img3"onmouseover="showMessagec()" onmouseout="hideMessagec()">
+        <div id="hover-messagec">Only light in the city</div> 
+        <img src="street.png" id="rod2">
+        <img src="tryun.jpeg" id="im4" onmouseover="showMessage4()" onmouseout="hideMessage4()">
+        <div id="hover-message4">Enter Try Skater University?</div> <!-- New hover message for tryun.jpeg -->
+        <img src="street.png" id="rod2">
+        <img src="parque.jpeg" id="img4"onmouseover="showMessaged()" onmouseout="hideMessaged()">
+        <div id="hover-messaged">'Hi! Watch me jump these'</div> 
+        <img src="street.png" id="rod2">
+        <img src="evom.jpeg" id="im5" onmouseover="showMessage5()" onmouseout="hideMessage5()">
+        <div id="hover-message5">Enter Evolve Trick Tracks?</div> <!-- New hover message for evom.jpeg -->
+    </div>
+</div>
+<footer>
+    <p>&copy; 2024 S.K.A.T.E "In every fall lies the strength to rise again" Jordan Garcia hack-ai-thon.</p>
+</footer>
+
+<script>
+      document.getElementById('im1').onclick = function() {
+            window.location.href = '/stumble.html';
+        };
+        document.getElementById('im2').onclick = function() {
+            window.location.href = '/know.html';
+        };
+        document.getElementById('im3').onclick = function() {
+            window.location.href = '/achieve.html';
+        };
+        document.getElementById('im4').onclick = function() {
+            window.location.href = '/try.html';
+        };
+        document.getElementById('im5').onclick = function() {
+            window.location.href = '/evolve.html';
+        };
+    function showMessage() {
+        document.getElementById('hover-message').style.display = 'block';
+    }
+
+    function hideMessage() {
+        document.getElementById('hover-message').style.display = 'none';
+    }
+
+    function showMessage2() {
+        document.getElementById('hover-message2').style.display = 'block';
+    }
+
+    function hideMessage2() {
+        document.getElementById('hover-message2').style.display = 'none';
+    }
+
+    function showMessage3() {
+        document.getElementById('hover-message3').style.display = 'block';
+    }
+
+    function hideMessage3() {
+        document.getElementById('hover-message3').style.display = 'none';
+    }
+
+    function showMessage4() {
+        document.getElementById('hover-message4').style.display = 'block';
+    }
+
+    function hideMessage4() {
+        document.getElementById('hover-message4').style.display = 'none';
+    }
+
+    function showMessage5() {
+        document.getElementById('hover-message5').style.display = 'block';
+    }
+
+    function hideMessage5() {
+        document.getElementById('hover-message5').style.display = 'none';
+    }
+    function showMessagea() {
+        document.getElementById('hover-messagea').style.display = 'block';
+    }
+
+    function hideMessagea() {
+        document.getElementById('hover-messagea').style.display = 'none';
+    }
+
+    function showMessageb() {
+        document.getElementById('hover-messageb').style.display = 'block';
+    }
+
+    function hideMessageb() {
+        document.getElementById('hover-messageb').style.display = 'none';
+    }
+
+    function showMessagec() {
+        document.getElementById('hover-messagec').style.display = 'block';
+    }
+
+    function hideMessagec() {
+        document.getElementById('hover-messagec').style.display = 'none';
+    }
+
+    function showMessaged() {
+        document.getElementById('hover-messaged').style.display = 'block';
+    }
+
+    function hideMessaged() {
+        document.getElementById('hover-messaged').style.display = 'none';
+    }
+
+    
+</script>
+
+</body>
+</html>
